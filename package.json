@@ -1,0 +1,53 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "server my cv ",
+  "main": "server.js",
+  "scripts": {
+    "dev": "ts-node-dev --respawn --transpile-only server.ts",
+    "build": "webpack -p",
+    "test": "karma start"
+  },
+  "author": "NguyenHuuDai",
+  "license": "ISC",
+  "dependencies": {
+    "@types/bcryptjs": "^2.4.6",
+    "@types/cookie-parser": "^1.4.7",
+    "@types/cors": "^2.8.17",
+    "@types/express": "^4.17.21",
+    "@types/jsonwebtoken": "^9.0.6",
+    "@types/node": "^20.11.30",
+    "bcryptjs": "^2.4.3",
+    "cloudinary": "^2.0.3",
+    "compression": "^1.7.4",
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "ejs": "^3.1.9",
+    "express": "^4.19.2",
+    "express-rate-limit": "^7.2.0",
+    "ioredis": "^5.3.2",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.2.3",
+    "nodemailer": "^6.9.13",
+    "path": "^0.12.7",
+    "socket.io": "^4.7.5",
+    "ts-node-dev": "^2.0.0",
+    "tsc-init": "^2.1.0"
+  },
+  "devDependencies": {
+    "@types/compression": "^1.7.5",
+    "@types/ejs": "^3.1.5",
+    "@types/jasmine": "^5.1.4",
+    "@types/nodemailer": "^6.4.14",
+    "jasmine-core": "^5.1.2",
+    "karma": "^6.4.3",
+    "karma-chrome-launcher": "^3.2.0",
+    "karma-jasmine": "^5.1.0",
+    "karma-webpack": "^5.0.1",
+    "ts-loader": "^9.5.1",
+    "typescript": "^5.4.3",
+    "webpack": "^5.91.0",
+    "webpack-dev-server": "^5.0.4"
+  }
+}
