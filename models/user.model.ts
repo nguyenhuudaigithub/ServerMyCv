@@ -2,6 +2,7 @@ require("dotenv").config();
 import mongoose, { Document, Model, Schema } from "mongoose";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
+import slugify from "slugify";
 
 const emailRegexPattern: RegExp = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -15,6 +16,7 @@ export interface IUser extends Document {
   };
   role: string;
   isVerified: boolean;
+  slug: string,
   comparePassword: (password: string) => Promise<boolean>;
   SignAccessToken: () => string;
   SignRefreshToken: () => string;
@@ -53,10 +55,23 @@ const userSchema: Schema<IUser> = new mongoose.Schema(
     isVerified: {
       type: Boolean,
       default: false,
-    }, 
+    },    
+    slug: { 
+      type: String,
+      unique: true,
+    },
   },
   { timestamps: true }
 );
+
+// Tạo slug từ phần trước của địa chỉ email
+userSchema.pre<IUser>("save", function (next) {
+  if (!this.isModified("email")) {
+    return next();
+  }
+  this.slug = slugify(this.email.split('@')[0], { lower: true });
+  next();
+});
 
 // Băm mật khẩu trước khi lưu
 userSchema.pre<IUser>("save", async function (next) {
