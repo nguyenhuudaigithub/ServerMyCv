@@ -12,6 +12,16 @@ cloudinary.config({
   api_secret: process.env.CLOUD_API_SECRET,
 });
 
+async function pingCloudinaryAPI() {
+  try {
+    const result = await cloudinary.api.ping();
+    console.log('Cloudinary API ping successful:', result);
+  } catch (error) {
+    console.error('Error pinging Cloudinary API:', error);
+  }
+}
+
+pingCloudinaryAPI();
 // initSocketServer(server);
 
 server.listen(process.env.PORT, () => {

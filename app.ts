@@ -8,6 +8,7 @@ import { ErrorMiddleware } from "./middleware/error";
 import { rateLimit } from "express-rate-limit";
 
 import userRouter from "./routes/user.route";
+import designRoute from "./routes/design.route";
 
 app.use(express.json({ limit: "50mb" }));
 
@@ -32,6 +33,7 @@ const limiter = rateLimit({
 
 // Router
 app.use("/api/v1", userRouter);
+app.use("/api/v1", designRoute);
 
 
 app.get("/test", (req: Request, res: Response, next: NextFunction) => {
